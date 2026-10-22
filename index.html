@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f6b84b" />
+    <meta
+      name="description"
+      content="Çarkı çevir, bir iyilik görevi seç, tamamladığın görevlerin yıldızlarını yak ve düşüncelerini yaz."
+    />
+    <title>İyilik Çarkı</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="game-shell">
+      <section id="wheelScreen" class="screen wheel-screen is-active" aria-labelledby="gameTitle">
+        <header class="game-title" aria-label="İyilik Çarkı">
+          <h1 id="gameTitle" class="sr-only">İyilik Çarkı</h1>
+          <img src="assets/title.jpg" alt="İyilik Çarkı" draggable="false" />
+        </header>
+
+        <div class="wheel-wrap" aria-describedby="spinHelp">
+          <div class="pointer" aria-hidden="true"><span></span></div>
+          <div id="wheelStage" class="wheel-stage">
+            <div id="wheelRotor" class="wheel-rotor">
+              <img src="assets/wheel-clean.png" alt="Beş iyilik kategorisinden oluşan çark" draggable="false" />
+            </div>
+            <div id="winnerMask" class="winner-mask" aria-hidden="true">
+              <img src="assets/wheel-clean.png" alt="" draggable="false" />
+            </div>
+            <button id="spinButton" class="spin-button" type="button">
+              <span class="spin-icon" aria-hidden="true">↻</span>
+              <span>ÇEVİR</span>
+            </button>
+          </div>
+        </div>
+
+        <p id="spinHelp" class="sr-only">Çarkı döndürmek için ortadaki Çevir düğmesine basın.</p>
+        <p id="wheelStatus" class="sr-only" role="status" aria-live="polite"></p>
+      </section>
+
+      <section id="resultScreen" class="screen result-screen" aria-labelledby="resultTitle" hidden>
+        <div class="result-content">
+          <article class="mission-card">
+            <div class="mission-visual">
+              <img id="missionImage" src="assets/gulumse.jpg" alt="" />
+              <span class="chosen-badge">ÇARKIN SEÇİMİ</span>
+            </div>
+            <div class="mission-copy">
+              <p class="eyebrow">Bugünün iyilik görevi</p>
+              <h2 id="resultTitle" tabindex="-1">Gülümse</h2>
+              <p class="mission-lead">Bir görev seç, tamamladığında yıldızını yak.</p>
+              <ul id="missionList" class="mission-list"></ul>
+            </div>
+          </article>
+
+          <section class="journal" aria-labelledby="journalTitle">
+            <div class="journal-heading">
+              <div>
+                <p class="eyebrow">İyilik günlüğüm</p>
+                <h3 id="journalTitle">Bugün nasıl hissettim?</h3>
+              </div>
+              <span class="pencil-mark" aria-hidden="true">✎</span>
+            </div>
+            <label class="sr-only" for="journalText">İyilik günlüğü notu</label>
+            <textarea
+              id="journalText"
+              maxlength="900"
+              placeholder="Bugün yaptığın iyiliği, hissettiklerini ya da hatırlamak istediğin bir anı buraya yaz…"
+            ></textarea>
+            <div class="character-count"><span id="charCount">0</span>/900</div>
+          </section>
+
+          <div class="action-row">
+            <button id="saveButton" class="action-button primary" type="button">
+              <span aria-hidden="true">⇩</span> Kaydet
+            </button>
+            <button id="homeButton" class="action-button secondary" type="button">
+              <span aria-hidden="true">⌂</span> Anasayfa
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <script src="html2canvas.min.js"></script>
+    <script src="snapshot-assets.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
